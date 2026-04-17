@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_HUB_USER = 'votre_username'
+        DOCKER_HUB_USER = 'geuse0'
         IMAGE_NAME = 'mon-app-js'
         REGISTRY_CREDENTIALS_ID = 'docker-hub-credentials'
     }
