@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: mon-app-js
-        image: votre_username/mon-app-js:latest
+        image: geuse0/mon-app-js:latest
         ports:
         - containerPort: 3000
