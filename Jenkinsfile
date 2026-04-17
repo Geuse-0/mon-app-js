@@ -16,13 +16,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
         }
 
@@ -47,22 +47,18 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
+                bat 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f service.yaml'
             }
         }
     }
 
     post {
         success {
-            mail to: 'admin@example.com',
-                 subject: "Succès du Pipeline: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "Le déploiement s'est terminé avec succès."
+            echo "Le déploiement s'est terminé avec succès."
         }
         failure {
-            mail to: 'admin@example.com',
-                 subject: "ÉCHEC du Pipeline: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "Veuillez vérifier les logs Jenkins."
+            echo "Veuillez vérifier les logs Jenkins."
         }
     }
 }
